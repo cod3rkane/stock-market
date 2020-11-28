@@ -1,6 +1,6 @@
 import React from 'react'
-import './header.scss'
+import styles from './header.module.scss'
 
 export default function Header(): JSX.Element {
-  return <header>TWWS</header>
+  return <header className={styles.header}>TWWS</header>
 }
