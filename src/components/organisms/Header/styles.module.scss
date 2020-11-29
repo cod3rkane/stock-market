@@ -19,7 +19,7 @@ header.header {
       display: flex;
       align-self: flex-end;
       align-items: center;
-  
+
       a:not(.userPicture) {
         color: $icon-primary-color;
         font-size: 22px;
@@ -27,21 +27,21 @@ header.header {
         text-transform: none;
         opacity: 0.5;
         transition: opacity 100ms ease-in-out;
-  
+
         &:hover,
         &:focus,
         &:active {
           opacity: 1;
         }
-  
+
         &:last-of-type {
           font-size: 28px;
         }
       }
-  
+
       a.userPicture {
         margin: 0 1.4rem;
-  
+
         span {
           background-color: #585c6a;
           display: inline-flex;
@@ -55,5 +55,4 @@ header.header {
       }
     }
   }
-
 }
