@@ -1,6 +1,5 @@
-
-
 ## Description
+
 > Behavioral Finance is an exciting field and you’ve decided to jump in with an idea for your new start up.
 > In an earlier experimentation you’ve noticed a correlation between the various social media posts on a
 > stock symbol and that share price for that stock symbol.
