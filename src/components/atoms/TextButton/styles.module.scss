@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import '../../../styles/variables.scss';
 
 button.textButton {
   display: flex;
@@ -7,9 +7,13 @@ button.textButton {
   border: none;
   border-color: transparent;
   color: $text-primary-color;
-  opacity: .5;
+  opacity: 0.5;
+  padding: 0;
+  appearance: none;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     opacity: 1;
   }
 

@@ -1,0 +1,13 @@
+@import '../../../styles/variables.scss';
+
+p.stockItem {
+  color: $text-primary-color;
+  font-size: 22px;
+  text-transform: uppercase;
+
+  span {
+    font-size: 16px;
+    opacity: .5;
+    margin-left: 0.4rem;
+  }
+}

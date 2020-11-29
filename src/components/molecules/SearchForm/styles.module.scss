@@ -1,0 +1,61 @@
+@import '../../../styles/variables.scss';
+
+div.searchForm {
+  background-color: $primary-color;
+  
+  @media screen and (min-width: $md) {
+    height: 148px;
+    display: flex;
+    align-items: center;
+  }
+
+  div.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.4rem 2rem;
+
+    section {
+      display: flex;
+      flex-direction: column;
+      height: inherit;
+      width: inherit;
+  
+      @media screen and (min-width: $md) {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+  
+        div {
+          margin: 0 3rem !important;
+          
+          &.selectedStock {
+            order: initial !important;
+          }
+        }
+      }
+  
+      div {
+        margin: 0.4rem 0;
+  
+        &:first-of-type {
+          width: inherit;
+          display: block;
+        }
+  
+        &.selectedStock {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          order: 3;
+          margin-top: 1.4rem;
+  
+          p:first-of-type {
+            color: $text-primary-color;
+            text-align: center;
+            opacity: .5;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+span.rating {
+  display: inline-flex;
+
+  svg {
+    fill: #646464;
+    width: 10px;
+    height: 10px;
+
+    &.active {
+      fill: #ffb400;
+    }
+  }
+}

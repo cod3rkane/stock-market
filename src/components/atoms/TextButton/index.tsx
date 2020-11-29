@@ -10,7 +10,7 @@ type Props = {
 
 export function TextButton({ icon, children, onClick }: Props): JSX.Element {
   return (
-    <button onClick={onClick} className={styles.textButton}>
+    <button type="button" onClick={onClick} className={styles.textButton}>
       <i className={icon} />
       <span>{children}</span>
     </button>

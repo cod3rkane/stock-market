@@ -8,6 +8,8 @@ export type Stock = {
   }
   readonly picture: string
   readonly description?: string
+  readonly date: string
+  readonly socialMediaCount: number
 }
 
 export type StockList = {
