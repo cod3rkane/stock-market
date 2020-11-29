@@ -60,7 +60,13 @@ export function Home({
       {loading ? (
         <span>Loading</span>
       ) : (
-        <>{stock ? <Stocks stock={stock} /> : <span>No Items</span>}</>
+        <>
+          {stock && media ? (
+            <Stocks stock={stock} media={media} />
+          ) : (
+            <span>No Items</span>
+          )}
+        </>
       )}
       <Modal
         title={
