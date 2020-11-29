@@ -1,0 +1,9 @@
+@import '../../styles/variables.scss';
+
+div.searchForm {
+  background-color: $primary-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 158px;
+}

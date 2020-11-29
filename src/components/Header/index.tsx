@@ -1,9 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
 
-import styles from './header.module.scss'
+import styles from './styles.module.scss'
 
-export default function Header(): JSX.Element {
+function Header(): JSX.Element {
   return (
     <header className={styles.header}>
       <nav>
@@ -26,3 +26,5 @@ export default function Header(): JSX.Element {
     </header>
   )
 }
+
+export default Header
