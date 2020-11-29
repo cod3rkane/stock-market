@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 header.header {
   align-items: center;
@@ -21,7 +21,7 @@ header.header {
       font-size: 22px;
       text-decoration: none;
       text-transform: none;
-      opacity: .5;
+      opacity: 0.5;
       transition: opacity 100ms ease-in-out;
 
       &:hover,
