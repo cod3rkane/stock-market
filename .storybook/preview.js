@@ -1,3 +1,17 @@
+import { withNextRouter } from 'storybook-addon-next-router'
+import { addDecorator } from '@storybook/react'
+
+import 'simple-line-icons/scss/simple-line-icons.scss'
+
+addDecorator(
+  withNextRouter({
+    path: '/',
+    asPath: '/',
+    query: {},
+    push() {}, // defaults to using addon actions integration, can override any method in the router
+  })
+)
+
 export const parameters = {
   options: {
     storySort: (a, b) => {
