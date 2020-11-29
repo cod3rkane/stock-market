@@ -10,6 +10,7 @@ import { searchAction } from '@/store/ducks/search/search'
 import { selectStockAction } from '@/store/ducks/stock/stock'
 import { selectMediaAction } from '@/store/ducks/socialMedia/socialMedia'
 import { SocialMedia } from '@/store/ducks/socialMedia/types'
+import styles from './styles.module.scss'
 
 type Props = {
   stock: Stock
@@ -64,7 +65,7 @@ export function Home({
           {stock && media ? (
             <Stocks stock={stock} media={media} />
           ) : (
-            <span>No Items</span>
+            <p className={styles.noItems}>No Items</p>
           )}
         </>
       )}
