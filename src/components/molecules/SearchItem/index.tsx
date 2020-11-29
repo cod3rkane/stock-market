@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { Stock } from '@/store/ducks/search/types'
+import { StockData } from '@/store/ducks/search/types'
 import Rating from '@/components/atoms/Rating'
 import styles from './styles.module.scss'
 
 type Props = {
-  stock: Stock
+  stock: StockData
 }
 
 export function SearchItem({ stock }: Props): JSX.Element {
@@ -19,19 +19,19 @@ export function SearchItem({ stock }: Props): JSX.Element {
       <ul>
         <li>
           <p>
-            <Rating value={3} />
+            <Rating value={stock.buyRating} />
           </p>
           <p>Buy</p>
         </li>
         <li>
           <p>
-            <Rating value={5} />
+            <Rating value={stock.sellRating} />
           </p>
           <p>Sell</p>
         </li>
         <li>
           <p>
-            <Rating value={1} />
+            <Rating value={stock.holdRating} />
           </p>
           <p>Hold</p>
         </li>

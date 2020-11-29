@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { Header } from '@/components/organisms'
 
 type Props = {
-  children: JSX.Element[]
+  children?: JSX.Element | JSX.Element[]
 }
 
 export function Page({ children }: Props): JSX.Element {

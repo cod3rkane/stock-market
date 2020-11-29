@@ -1,41 +1,100 @@
-import { Page } from '@/components/templates'
-import SearchItem from '@/components/molecules/SearchItem'
-import SearchForm from '@/components/molecules/SearchForm'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
 
-export default function Home(): JSX.Element {
+import { SearchForm, Modal } from '@/components/molecules'
+import { Stocks, StockSelector, MediaSelector } from '@/components/organisms'
+import { Page } from '@/components/templates'
+import { Stock } from '@/store/ducks/search/types'
+import { ApplicationState } from '@/store/reducers'
+import { searchAction } from '@/store/ducks/search/search'
+import { selectStockAction } from '@/store/ducks/stock/stock'
+import { selectMediaAction } from '@/store/ducks/socialMedia/socialMedia'
+import { SocialMedia } from '@/store/ducks/socialMedia/types'
+
+type Props = {
+  stock: Stock
+  stocks: Stock[]
+  medias: SocialMedia[]
+  media: SocialMedia
+  loading: boolean
+  onSelectStock: (stock: Stock) => void
+  onSelectMedia: (media: SocialMedia) => void
+}
+
+export function Home({
+  stock,
+  loading,
+  stocks,
+  onSelectStock,
+  onSelectMedia,
+  media,
+  medias,
+}: Props): JSX.Element {
+  const [isModalOpen, setModalOpen] = useState(false)
+  const [modalContent, setModalContent] = useState('')
+  const onClickSearchStock = () => {
+    setModalOpen(true)
+    setModalContent('stock')
+  }
+  const onClickSearchMedia = () => {
+    setModalOpen(true)
+    setModalContent('media')
+  }
+  const onClickStock = (stock: Stock) => {
+    onSelectStock(stock)
+    setModalOpen(false)
+  }
+  const onClickMedia = (media: SocialMedia) => {
+    onSelectMedia(media)
+    setModalOpen(false)
+  }
+
   return (
     <Page>
-      <SearchForm />
-      <SearchItem
-        stock={{
-          id: '123',
-          title: 'LMIN',
-          price: {
-            currency: 'USD',
-            amount: 1005,
-            decimals: 58,
-          },
-          picture: '',
-          description: 'description',
-          date: '2020/11/29',
-          socialMediaCount: 89990,
-        }}
+      <SearchForm
+        selectedStock={stock}
+        selectedMedia={media}
+        onClickStock={onClickSearchStock}
+        onClickMedia={onClickSearchMedia}
       />
-      <SearchItem
-        stock={{
-          id: '123',
-          title: 'LMIN',
-          price: {
-            currency: 'USD',
-            amount: 1005,
-            decimals: 58,
-          },
-          picture: '',
-          description: 'description',
-          date: '2020/11/30',
-          socialMediaCount: 100,
-        }}
-      />
+      {loading ? (
+        <span>Loading</span>
+      ) : (
+        <>{stock ? <Stocks stock={stock} /> : <span>No Items</span>}</>
+      )}
+      <Modal
+        title={
+          modalContent === 'stock' ? 'Select Stock' : 'Select Social Media'
+        }
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+      >
+        {modalContent === 'stock' && (
+          <StockSelector items={stocks} onClick={onClickStock} />
+        )}
+        {modalContent === 'media' && (
+          <MediaSelector items={medias} onClick={onClickMedia} />
+        )}
+      </Modal>
     </Page>
   )
 }
+
+Home.getInitialProps = async ({ store, query }) => {
+  return store.dispatch(searchAction(query.search))
+}
+
+const mapStateToProps = ({ search, stock, socialMedia }: ApplicationState) => ({
+  stocks: search.data.stockList,
+  medias: search.data.socialMediaList,
+  stock: stock.data,
+  media: socialMedia.data,
+  loading: search.loading,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  onSelectStock: (stock: Stock) => dispatch(selectStockAction(stock)),
+  onSelectMedia: (media: SocialMedia) => dispatch(selectMediaAction(media)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

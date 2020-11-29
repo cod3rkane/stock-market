@@ -2,19 +2,20 @@ import produce from 'immer'
 import { Dispatch } from 'redux'
 
 import { simpleAction, SimpleAction, makeInitialState } from '@/utils/helpers'
-import { StockList } from './types'
+import { SearchList } from './types'
+import { search } from '@/services/search'
 
 export const SEARCH_REQUEST = '@app/SEARCH_REQUEST'
 export const SEARCH_SUCCESS = '@app/SEARCH_SUCCESS'
 export const SEARCH_FAILURE = '@app/SEARCH_FAILURE'
 
-export const initialState = makeInitialState<StockList>({
+export const initialState = makeInitialState<SearchList>({
   items: [],
 })
 
 export default function reducer(
   state = initialState,
-  action: SimpleAction<StockList>
+  action: SimpleAction<SearchList>
 ): any {
   return produce(state, (draft) => {
     switch (action.type) {
@@ -48,9 +49,7 @@ export const searchAction = (query: string) => async (
   dispatch(searchRequest())
 
   try {
-    // @TODO: search service
-    // const payload = await search(query);
-    const payload = { query }
+    const payload = await search(query)
 
     dispatch(searchSuccess(payload))
   } catch {
