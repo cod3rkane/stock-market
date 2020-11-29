@@ -1,17 +1,10 @@
-import Head from 'next/head'
-
+import { Page } from '@/components/templates'
 import SearchItem from '@/components/molecules/SearchItem'
 import SearchForm from '@/components/molecules/SearchForm'
-import Header from '@/components/organisms/Header'
 
 export default function Home(): JSX.Element {
   return (
-    <main>
-      <Head>
-        <title>The Wolf of Wall Street</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
+    <Page>
       <SearchForm />
       <SearchItem
         stock={{
@@ -43,6 +36,6 @@ export default function Home(): JSX.Element {
           socialMediaCount: 100,
         }}
       />
-    </main>
+    </Page>
   )
 }
